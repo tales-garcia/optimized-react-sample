@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Post from '../Post';
 import { ListContainer } from './styles';
 
@@ -7,11 +7,11 @@ interface ListProps {
 }
 
 const List: React.FC<ListProps> = ({ posts }) => {
-    function row({ style, index }: any) {
+    const row = useCallback(({ style, index }: any) => {
         return (
             <Post style={style} key={posts[index].id} post={posts[index]} />
         );
-    }
+    }, [posts]);
 
     return (
         <ListContainer
