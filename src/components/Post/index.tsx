@@ -8,11 +8,12 @@ interface PostData {
 
 interface PostProps {
     post: PostData;
+    style: React.CSSProperties;
 }
 
-const Post: React.FC<PostProps> = ({ post }) => {
+const Post: React.FC<PostProps> = ({ post, style }) => {
     return (
-        <Container>
+        <Container style={style}>
             <h3>{post.title}</h3>
             <img src={post.url} alt={post.title} />
         </Container>
