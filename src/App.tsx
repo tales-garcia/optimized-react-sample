@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import List from "./components/List";
 
-function App() {
+const App: React.FC = React.memo(() => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -12,6 +12,6 @@ function App() {
   return (
     <List posts={posts} />
   );
-}
+});
 
 export default App;

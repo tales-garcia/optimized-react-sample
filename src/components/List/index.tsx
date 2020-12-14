@@ -6,7 +6,11 @@ interface ListProps {
     posts: any[];
 }
 
-const List: React.FC<ListProps> = ({ posts }) => {
+function isEqual(prevProps: ListProps, actualProps: ListProps) {
+    return prevProps.posts.length === actualProps.posts.length;
+}
+
+const List: React.FC<ListProps> = React.memo(({ posts }) => {
     const row = useCallback(({ style, index }: any) => {
         return (
             <Post style={style} key={posts[index].id} post={posts[index]} />
@@ -24,6 +28,6 @@ const List: React.FC<ListProps> = ({ posts }) => {
             {row}
         </ListContainer>
     );
-}
+}, isEqual);
 
 export default List;
